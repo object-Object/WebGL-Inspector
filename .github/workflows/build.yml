@@ -15,10 +15,10 @@ jobs:
       - name: Build
         run: cd core && bash buildextensions.sh
       
-      - run: |
+      - name: Copy build to output
+        run: |
           mkdir -p dist
-          cp core/embed.js dist
-          cp core/lib dist
+          cp -r core/embed.js core/lib dist
 
       - uses: actions/upload-pages-artifact@v5
         with:
